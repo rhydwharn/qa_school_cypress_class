@@ -1,0 +1,26 @@
+{
+  "atm": {
+    "login": {
+      "pin": "atm-pin-input",
+      "submit": "atm-pin-submit"
+    },
+    "menu": {
+      "balance": "atm-menu-balance",
+      "withdrawal": "atm-menu-withdrawal",
+      "deposit": "atm-menu-deposit",
+      "transfer": "atm-menu-transfer",
+      "logout": "atm-menu-logout"
+    },
+    "quickAmounts": {
+      "500": "atm-quick-amount-500",
+      "1000": "atm-quick-amount-1000"
+    },
+    "withdrawal": {
+      "amount": "atm-withdrawal-amount",
+      "submit": "atm-withdrawal-submit"
+    },
+    "success": {
+      "title": "atm-success-title"
+    }
+  }
+}
