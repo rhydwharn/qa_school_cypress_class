@@ -1,4 +1,4 @@
-
+  
 // ***********************************************
 // Visit https://on.cypress.io/custom-commands to
 // learn more about custom commands.
@@ -19,19 +19,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-let loginLocators
 
-before(() => {
-        cy.fixture('pageElements').then((pageData) => {
-            loginLocators = pageData.atm.login;
-        })
-    })
 
-Cypress.Commands.add('atmLogin', (pin) => {
-    cy.getElementByCy(loginLocators.pin).type(pin);
-    cy.getElementByCy(loginLocators.submit).click();
-    // cy.url().should('include', '/arena/simulator/atm');
-    cy.contains('Select Transaction');
+Cypress.Commands.add('atmLogin', () => {
+    cy.getElementByCy('atm-pin-input').type('1234')
+    cy.getElementByCy('atm-pin-submit').click()
 })
 
 Cypress.Commands.add('getElementByCy', (selector) => {

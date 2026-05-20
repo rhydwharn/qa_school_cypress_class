@@ -1,27 +1,99 @@
+import pageElements from '../fixtures/pageElements.json'
 
-describe('ATM Simulator Tests', () => {
+describe('ATM Simulator', () => {
 
-    beforeEach(() => {
-        cy.visit('/arena/simulator/atm');
-    })
+  beforeEach(() => {
+    cy.visit('/arena/simulator/atm')
+  })
+
+  it('Login Successfully', () => {
+
+    cy.atmLogin()
+
+    cy.contains('Select Transaction')
+  })
+
+  it('Check Balance', () => {
+
+    cy.atmLogin()
+
+    cy.getElementByCy(pageElements.atm.menu.balance)
+      .click()
+
+    cy.getElementByCy(pageElements.atm.balance.amount)
+      .should('contain', '$')
+  })
+
+  it('Deposit Cash', () => {
+
+    cy.atmLogin()
+
+    cy.getElementByCy(pageElements.atm.menu.deposit)
+      .click()
+
+    cy.getElementByCy(pageElements.atm.deposit.amount)
+      .type('500')
+
+    cy.getElementByCy(pageElements.atm.deposit.submit)
+      .click()
+
+    cy.contains('Transaction Successful')
+  })
+
+  it('Withdraw Cash', () => {
+
+    cy.atmLogin()
+
+    cy.getElementByCy(pageElements.atm.menu.withdraw)
+      .click()
+
+    cy.getElementByCy(pageElements.atm.withdrawal.amount)
+      .type('50')
+
+    cy.getElementByCy(pageElements.atm.withdrawal.submit)
+      .click()
+
+    cy.contains('Transaction Successful')
+  })
+
+  it('Mini Statement', () => {
+
+    cy.atmLogin()
+
+    cy.getElementByCy(pageElements.atm.menu.statement)
+      .click()
+
+    cy.getElementByCy(pageElements.atm.statement.list)
+      .should('exist')
+  })
+
+  it('Change PIN', () => {
+
+    cy.atmLogin()
+
+    cy.getElementByCy(pageElements.atm.menu.changePin)
+      .click()
+
+    cy.getElementByCy(pageElements.atm.changePin.newPin)
+      .type('4321')
+
+    cy.getElementByCy(pageElements.atm.changePin.confirmPin)
+      .type('4321')
+
+    cy.getElementByCy(pageElements.atm.changePin.submit)
+      .click()
+
     
-    it('login with valid credentials', () => {
-        cy.atmLogin('0000000000')
-        cy.contains('SecureBank ATM')
-    });
+  })
 
-    it('check account balance', () => {
-        cy.atmLogin('1234')
-       cy.get('[data-cy="atm-menu-balance"]').click();
-       cy.contains('Available Balance')
-    });
+  it('Logout', () => {
 
-    it('withdraw cash', () => {
-        cy.atmLogin('1234')
-        cy.get('[data-cy="atm-menu-withdrawal"]').click()
-        cy.get('[data-cy="atm-quick-amount-500"]').click()
-        cy.get('[data-cy="atm-withdrawal-submit"]').click()
-        cy.get('[data-cy="atm-success-title"]').should('be.visible').should('contain', 'Transaction Successful!')
-    })
-});
-            
+    cy.atmLogin()
+
+    cy.getElementByCy(pageElements.atm.menu.logout)
+      .click()
+
+    cy.contains('Welcome to SecureBank')
+  })
+
+})
