@@ -4,23 +4,38 @@
       "pin": "atm-pin-input",
       "submit": "atm-pin-submit"
     },
+
     "menu": {
       "balance": "atm-menu-balance",
-      "withdrawal": "atm-menu-withdrawal",
+      "withdraw": "atm-menu-withdrawal",
       "deposit": "atm-menu-deposit",
-      "transfer": "atm-menu-transfer",
-      "logout": "atm-menu-logout"
+      "statement": "atm-menu-statement",
+      "changePin": "atm-menu-change-pin",
+      "logout": "atm-menu-exit"
     },
-    "quickAmounts": {
-      "500": "atm-quick-amount-500",
-      "1000": "atm-quick-amount-1000"
+
+    "balance": {
+      "amount": "atm-balance-amount"
     },
+
+    "deposit": {
+      "amount": "atm-deposit-input",
+      "submit": "atm-deposit-submit"
+    },
+
     "withdrawal": {
-      "amount": "atm-withdrawal-amount",
+      "amount": "atm-withdrawal-input",
       "submit": "atm-withdrawal-submit"
     },
-    "success": {
-      "title": "atm-success-title"
+
+    "statement": {
+      "list": "atm-statement-list"
+    },
+
+    "changePin": {
+      "newPin": "atm-new-pin-input",
+      "confirmPin": "atm-confirm-pin-input",
+      "submit": "atm-change-pin-submit"
     }
   }
 }
